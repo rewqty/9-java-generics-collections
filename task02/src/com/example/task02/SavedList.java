@@ -59,8 +59,6 @@ public class SavedList<E extends Serializable> extends AbstractList<E> {
     private void updateFile(){
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(path))) {
             oos.writeObject(list);
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }

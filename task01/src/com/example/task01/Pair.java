@@ -8,10 +8,10 @@ import java.util.function.BiConsumer;
         private final U valueU;
 
         public static <T, U> Pair<T, U> of (T param1, U param2){
-            return new Pair(param1, param2);
+            return new Pair<>(param1, param2);
         }
 
-        public void ifPresent(BiConsumer consumer){
+        public void ifPresent(BiConsumer<? super T, ? super U> consumer){
             if (valueT != null && valueU != null) consumer.accept(valueT, valueU);
         }
 
@@ -33,7 +33,7 @@ import java.util.function.BiConsumer;
             if (this == obj) return true;
             if (!(obj instanceof Pair)) return false;
 
-            Pair p = (Pair) obj;
+            Pair<?,?> p = (Pair<?,?>) obj;
             return valueT.equals(p.valueT) && valueU.equals(p.valueU);
         }
 

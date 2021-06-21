@@ -30,6 +30,7 @@ public class Task03Main {
         catch (IOException e) {
             e.printStackTrace();
         }
+
         words = new ArrayList<>(new LinkedHashSet<>(words)); // удаление дубликатов слов
 
         HashMap<String, TreeSet<String>> anagramsMap = new HashMap<>();
@@ -55,13 +56,7 @@ public class Task03Main {
     }
 
     private static boolean isWordCorrect(String word){
-        if (word.length() < 4)
-            return false;
-        for (int i = 0; i < word.length(); i++){
-            if (!(Character.UnicodeBlock.of(word.charAt(i)).equals(Character.UnicodeBlock.CYRILLIC)))
-                return false;
-        }
-        return true;
+        return word.length() > 3 && word.matches("^[а-яА-Я]+$");
     }
 
     private static String getHashSetKey(Set<String> keySet, String word){
